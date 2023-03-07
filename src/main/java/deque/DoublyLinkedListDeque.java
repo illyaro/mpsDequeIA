@@ -69,12 +69,18 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     @Override
     public T first() {
         // TODO
+        if(this.first == null) {
+            throw new DoubleEndedQueueException("Error: Empty queue.");
+        }
         return this.first.getItem();
     }
 
     @Override
     public T last() {
         // TODO
+        if(this.last == null) {
+            throw new DoubleEndedQueueException("Error: Empty queue.");
+        }
         return this.last.getItem();
     }
 
