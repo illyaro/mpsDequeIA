@@ -17,6 +17,7 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     public void prepend(T value) {
         // TODO
         if(size == 0) {
+            // TODO Create a node because rn is null
             first.setItem(value);
         } else {
             DequeNode<T> next = new DequeNode<>(value, null, first);
@@ -70,7 +71,7 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     public T first() {
         // TODO
         if(this.first == null) {
-            throw new DoubleEndedQueueException("Error: Empty queue.");
+            throw new DoubleEndedQueueException("ERROR: Queue is empty.");
         }
         return this.first.getItem();
     }
@@ -79,7 +80,7 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     public T last() {
         // TODO
         if(this.last == null) {
-            throw new DoubleEndedQueueException("Error: Empty queue.");
+            throw new DoubleEndedQueueException("ERROR: Queue is empty.");
         }
         return this.last.getItem();
     }
