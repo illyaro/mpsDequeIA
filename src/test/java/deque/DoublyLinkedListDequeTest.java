@@ -292,6 +292,36 @@ class DoublyLinkedListDequeTest {
             }
         }
 
+        @Nested
+        @DisplayName("Deleting last element from a deque that contains only the element 5")
+        class deletingLastElementFromDequeThatContainsOneElement {
+            @Test
+            @DisplayName("First throws exception")
+            void firstElementIsNull() {
+                deque.append(Integer.valueOf(5));
+                deque.deleteLast();
+                assertThrows(DoubleEndedQueueException.class, () -> deque.first());
+            }
+
+            @Test
+            @DisplayName("Last throws exception")
+            void lastElementIsFive() {
+                deque.append(Integer.valueOf(5));
+                deque.deleteLast();
+                assertThrows(DoubleEndedQueueException.class, () -> deque.last());
+            }
+
+            @Test
+            @DisplayName("Size is 0")
+            void sizeIsOne() {
+                deque.append(Integer.valueOf(5));
+                deque.deleteLast();
+                Integer expectedResult = 0;
+                Integer actualResult = deque.size();
+                assertEquals(expectedResult, actualResult);
+            }
+        }
+
 
         @Nested
         @DisplayName("Deleting first element from a deque that contains the elements 5 and 2")
