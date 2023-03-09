@@ -7,7 +7,6 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     private int size;
 
     public DoublyLinkedListDeque() {
-        // TODO
         first = null;
         last = null;
         size = 0;
@@ -15,7 +14,6 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void prepend(T value) {
-        // TODO
         if(first == null) {
             DequeNode<T> node = new DequeNode<>(value, null, null);
             first = node;
@@ -29,7 +27,6 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void append(T value) {
-        // TODO
         if(last == null) {
             DequeNode<T> node = new DequeNode<>(value, null, null);
             last = node;
@@ -43,7 +40,6 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void deleteFirst() {
-        // TODO
         if(first == null) {
             throw new DoubleEndedQueueException("ERROR: Queue is empty.");
         } else {
@@ -57,7 +53,6 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void deleteLast() {
-        // TODO
         if(last == null) {
             throw new DoubleEndedQueueException("ERROR: Queue is empty.");
         } else {
@@ -71,7 +66,6 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public T first() {
-        // TODO
         if(first == null) {
             throw new DoubleEndedQueueException("ERROR: Queue is empty.");
         }
@@ -80,7 +74,6 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public T last() {
-        // TODO
         if(last == null) {
             throw new DoubleEndedQueueException("ERROR: Queue is empty.");
         }
@@ -89,7 +82,6 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public int size() {
-        // TODO
         return this.size;
     }
 }
