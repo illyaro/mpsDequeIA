@@ -6,6 +6,8 @@ package deque;
  * The previous and next of the first and last node of the deque is {@code null}.
  *
  * @param <T> the type of elements held in the deque.
+ *
+ *
  */
 class DequeNode<T> {
     private T item;
