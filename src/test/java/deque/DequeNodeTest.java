@@ -97,7 +97,7 @@ class DequeNodeTest {
 
     @Nested
     @DisplayName("A prepended node")
-    class prependedNode{
+    class PrependedNode{
 
 
         DequeNode prependNodeTo(DequeNode node){
@@ -150,7 +150,7 @@ class DequeNodeTest {
 
     @Nested
     @DisplayName("An appended node")
-    class appendedNode{
+    class AppendedNode{
         DequeNode appendNodeAfter(DequeNode node){
             DequeNode<Integer> appendedNode = new DequeNode<>(4, node, null);
             node.setNext(appendedNode);
@@ -197,6 +197,23 @@ class DequeNodeTest {
             DequeNode<Integer> actualNode = appended.getNext();
             assertNull(actualNode);
         }
+    }
+
+    @Nested
+    @DisplayName("A middle node")
+    class MiddleNode{
+
+        @Test
+        @DisplayName("is not a terminal node")
+        void middleNodeIsNotATerminalNode(){
+            DequeNode<Integer> prepended = new DequeNode<>(4, null, firstNode);
+            DequeNode<Integer> appended = new DequeNode<>(4, firstNode, null);
+            firstNode.setPrevious(prepended);
+            firstNode.setNext(appended);
+            Boolean actualValue = firstNode.isNotATerminalNode();
+            assertTrue(actualValue);
+        }
+
     }
 
 }
