@@ -138,7 +138,7 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("First element is 5")
             void firstElementOfDequeIsFive() {
-                deque.prepend(Integer.valueOf(5));
+                deque.prepend(5);
                 Integer expectedResult = 5;
                 Integer actualResult = deque.first();
                 assertEquals(expectedResult, actualResult);
@@ -147,7 +147,7 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Last element is 5")
             void lastElementIsFive() {
-                deque.prepend(Integer.valueOf(5));
+                deque.prepend(5);
                 Integer expectedResult = 5;
                 Integer actualResult = deque.last();
                 assertEquals(expectedResult, actualResult);
@@ -156,7 +156,7 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Size is 1")
             void sizeIsOne() {
-                deque.prepend(Integer.valueOf(5));
+                deque.prepend(5);
                 Integer expectedResult = 1;
                 Integer actualResult = deque.size();
                 assertEquals(expectedResult, actualResult);
@@ -169,7 +169,7 @@ class DoublyLinkedListDequeTest {
                 @Test
                 @DisplayName("First element is 5")
                 void firstElementOfDequeIsFive() {
-                    deque.append(Integer.valueOf(5));
+                    deque.append(5);
                     Integer expectedResult = 5;
                     Integer actualResult = deque.first();
                     assertEquals(expectedResult, actualResult);
@@ -178,7 +178,7 @@ class DoublyLinkedListDequeTest {
                 @Test
                 @DisplayName("Last element is 5")
                 void lastElementIsFive() {
-                    deque.append(Integer.valueOf(5));
+                    deque.append(5);
                     Integer expectedResult = 5;
                     Integer actualResult = deque.last();
                     assertEquals(expectedResult, actualResult);
@@ -187,7 +187,7 @@ class DoublyLinkedListDequeTest {
                 @Test
                 @DisplayName("Size is 1")
                 void sizeIsOne() {
-                    deque.append(Integer.valueOf(5));
+                    deque.append(5);
                     Integer expectedResult = 1;
                     Integer actualResult = deque.size();
                     assertEquals(expectedResult, actualResult);
@@ -202,8 +202,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("First element is 2")
             void firstElementOfDequeIsFive() {
-                deque.append(Integer.valueOf(5));
-                deque.prepend(Integer.valueOf(2));
+                deque.append(5);
+                deque.prepend(2);
                 Integer expectedResult = 2;
                 Integer actualResult = deque.first();
                 assertEquals(expectedResult, actualResult);
@@ -212,8 +212,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Last element is 5")
             void lastElementIsFive() {
-                deque.append(Integer.valueOf(5));
-                deque.prepend(Integer.valueOf(2));
+                deque.append(5);
+                deque.prepend(2);
                 Integer expectedResult = 5;
                 Integer actualResult = deque.last();
                 assertEquals(expectedResult, actualResult);
@@ -222,8 +222,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Size is 2")
             void sizeIsOne() {
-                deque.append(Integer.valueOf(5));
-                deque.prepend(Integer.valueOf(2));
+                deque.append(5);
+                deque.prepend(2);
                 Integer expectedResult = 2;
                 Integer actualResult = deque.size();
                 assertEquals(expectedResult, actualResult);
@@ -237,8 +237,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("First element is 5")
             void firstElementOfDequeIsFive() {
-                deque.append(Integer.valueOf(5));
-                deque.append(Integer.valueOf(2));
+                deque.append(5);
+                deque.append(2);
                 Integer expectedResult = 5;
                 Integer actualResult = deque.first();
                 assertEquals(expectedResult, actualResult);
@@ -247,8 +247,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Last element is 2")
             void lastElementIsFive() {
-                deque.append(Integer.valueOf(5));
-                deque.append(Integer.valueOf(2));
+                deque.append(5);
+                deque.append(2);
                 Integer expectedResult = 2;
                 Integer actualResult = deque.last();
                 assertEquals(expectedResult, actualResult);
@@ -257,8 +257,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Size is 2")
             void sizeIsOne() {
-                deque.append(Integer.valueOf(5));
-                deque.append(Integer.valueOf(2));
+                deque.append(5);
+                deque.append(2);
                 Integer expectedResult = 2;
                 Integer actualResult = deque.size();
                 assertEquals(expectedResult, actualResult);
@@ -272,7 +272,7 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("First throws exception")
             void firstElementIsNull() {
-                deque.append(Integer.valueOf(5));
+                deque.append(5);
                 deque.deleteFirst();
                 assertThrows(DoubleEndedQueueException.class, () -> deque.first());
             }
@@ -280,7 +280,7 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Last throws exception")
             void lastElementIsFive() {
-                deque.append(Integer.valueOf(5));
+                deque.append(5);
                 deque.deleteFirst();
                 assertThrows(DoubleEndedQueueException.class, () -> deque.last());
             }
@@ -288,7 +288,7 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Size is 0")
             void sizeIsOne() {
-                deque.append(Integer.valueOf(5));
+                deque.append(5);
                 deque.deleteFirst();
                 Integer expectedResult = 0;
                 Integer actualResult = deque.size();
@@ -302,7 +302,7 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("First throws exception")
             void firstElementIsNull() {
-                deque.append(Integer.valueOf(5));
+                deque.append(5);
                 deque.deleteLast();
                 assertThrows(DoubleEndedQueueException.class, () -> deque.first());
             }
@@ -310,7 +310,7 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Last throws exception")
             void lastElementIsFive() {
-                deque.append(Integer.valueOf(5));
+                deque.append(5);
                 deque.deleteLast();
                 assertThrows(DoubleEndedQueueException.class, () -> deque.last());
             }
@@ -318,7 +318,7 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Size is 0")
             void sizeIsOne() {
-                deque.append(Integer.valueOf(5));
+                deque.append(5);
                 deque.deleteLast();
                 Integer expectedResult = 0;
                 Integer actualResult = deque.size();
@@ -333,8 +333,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("First is 2")
             void firstElementIsTwo() {
-                deque.append(Integer.valueOf(5));
-                deque.append(Integer.valueOf(2));
+                deque.append(5);
+                deque.append(2);
                 deque.deleteFirst();
                 Integer expectedResult = 2;
                 Integer actualResult = deque.first();
@@ -344,8 +344,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Last element is 2")
             void lastElementIsFive() {
-                deque.append(Integer.valueOf(5));
-                deque.append(Integer.valueOf(2));
+                deque.append(5);
+                deque.append(2);
                 deque.deleteFirst();
                 Integer expectedResult = 2;
                 Integer actualResult = deque.last();
@@ -355,8 +355,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Size is 1")
             void sizeIsOne() {
-                deque.append(Integer.valueOf(5));
-                deque.append(Integer.valueOf(2));
+                deque.append(5);
+                deque.append(2);
                 deque.deleteFirst();
                 Integer expectedResult = 1;
                 Integer actualResult = deque.size();
@@ -371,8 +371,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("First is 5")
             void firstElementIsTwo() {
-                deque.append(Integer.valueOf(5));
-                deque.append(Integer.valueOf(2));
+                deque.append(5);
+                deque.append(2);
                 deque.deleteLast();
                 Integer expectedResult = 5;
                 Integer actualResult = deque.first();
@@ -382,8 +382,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Last element is 5")
             void lastElementIsFive() {
-                deque.append(Integer.valueOf(5));
-                deque.append(Integer.valueOf(2));
+                deque.append(5);
+                deque.append(2);
                 deque.deleteLast();
                 Integer expectedResult = 5;
                 Integer actualResult = deque.last();
@@ -393,8 +393,8 @@ class DoublyLinkedListDequeTest {
             @Test
             @DisplayName("Size is 1")
             void sizeIsOne() {
-                deque.append(Integer.valueOf(5));
-                deque.append(Integer.valueOf(2));
+                deque.append(5);
+                deque.append(2);
                 deque.deleteLast();
                 Integer expectedResult = 1;
                 Integer actualResult = deque.size();
