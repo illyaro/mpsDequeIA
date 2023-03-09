@@ -1,4 +1,4 @@
-package deque;
+package org.mps.deque;
 
 import org.junit.jupiter.api.*;
 

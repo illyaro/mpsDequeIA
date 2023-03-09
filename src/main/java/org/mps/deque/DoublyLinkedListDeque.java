@@ -1,4 +1,4 @@
-package deque;
+package org.mps.deque;
 
 /**
  * @author Illya Rozumovskyy
