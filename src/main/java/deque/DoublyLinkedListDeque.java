@@ -1,5 +1,10 @@
 package deque;
 
+/**
+ * @author Illya Rozumovskyy
+ * @author Aryan Dilip Sadhwani Sadhwani
+*/
+
 public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     private DequeNode<T> first;
