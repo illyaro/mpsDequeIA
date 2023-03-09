@@ -4,10 +4,14 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+TEST CASES:
+1.
+ */
 @DisplayName("Double Linked List Deque")
 class DoublyLinkedListDequeTest {
 
-    protected DoublyLinkedListDeque<Integer> deque;
+    public DoublyLinkedListDeque<Integer> deque;
 
     @BeforeEach
     void setUp() {
@@ -84,11 +88,248 @@ class DoublyLinkedListDequeTest {
         }
     }
 
-    @Test
-    void prependTest(){
-        deque.prepend(Integer.valueOf(5));
-        assertEquals(5, deque.first());
-        assertEquals(5,deque.last());
-        assertEquals(1, deque.size());
+    @Nested
+    @DisplayName("With valid deque")
+    class validDequeTests {
+        @Nested
+        @DisplayName("Prepending 5 to an empty deque")
+        class prependOneElementToEmptyDeque {
+            @Test
+            @DisplayName("First element is 5")
+            void firstElementOfDequeIsFive() {
+                deque.prepend(Integer.valueOf(5));
+                Integer expectedResult = 5;
+                Integer actualResult = deque.first();
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Last element is 5")
+            void lastElementIsFive() {
+                deque.prepend(Integer.valueOf(5));
+                Integer expectedResult = 5;
+                Integer actualResult = deque.last();
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Size is 1")
+            void sizeIsOne() {
+                deque.prepend(Integer.valueOf(5));
+                Integer expectedResult = 1;
+                Integer actualResult = deque.size();
+                assertEquals(expectedResult, actualResult);
+            }
+        }
+
+            @Nested
+            @DisplayName("Appending 5 to an empty deque")
+            class appendOneElementToEmptyDeque {
+                @Test
+                @DisplayName("First element is 5")
+                void firstElementOfDequeIsFive() {
+                    deque.append(Integer.valueOf(5));
+                    Integer expectedResult = 5;
+                    Integer actualResult = deque.first();
+                    assertEquals(expectedResult, actualResult);
+                }
+
+                @Test
+                @DisplayName("Last element is 5")
+                void lastElementIsFive() {
+                    deque.append(Integer.valueOf(5));
+                    Integer expectedResult = 5;
+                    Integer actualResult = deque.last();
+                    assertEquals(expectedResult, actualResult);
+                }
+
+                @Test
+                @DisplayName("Size is 1")
+                void sizeIsOne() {
+                    deque.append(Integer.valueOf(5));
+                    Integer expectedResult = 1;
+                    Integer actualResult = deque.size();
+                    assertEquals(expectedResult, actualResult);
+                }
+
+            }
+
+
+        @Nested
+        @DisplayName("Prepending 2 to a deque that contains 5.")
+        class prependOneElementToDequeThatContainsOneElement {
+            @Test
+            @DisplayName("First element is 2")
+            void firstElementOfDequeIsFive() {
+                deque.append(Integer.valueOf(5));
+                deque.prepend(Integer.valueOf(2));
+                Integer expectedResult = 2;
+                Integer actualResult = deque.first();
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Last element is 5")
+            void lastElementIsFive() {
+                deque.append(Integer.valueOf(5));
+                deque.prepend(Integer.valueOf(2));
+                Integer expectedResult = 5;
+                Integer actualResult = deque.last();
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Size is 2")
+            void sizeIsOne() {
+                deque.append(Integer.valueOf(5));
+                deque.prepend(Integer.valueOf(2));
+                Integer expectedResult = 2;
+                Integer actualResult = deque.size();
+                assertEquals(expectedResult, actualResult);
+            }
+        }
+
+
+        @Nested
+        @DisplayName("Appending 2 to a deque that contains 5")
+        class appendOneElementToDequeThatContainsOneElement {
+            @Test
+            @DisplayName("First element is 5")
+            void firstElementOfDequeIsFive() {
+                deque.append(Integer.valueOf(5));
+                deque.append(Integer.valueOf(2));
+                Integer expectedResult = 5;
+                Integer actualResult = deque.first();
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Last element is 2")
+            void lastElementIsFive() {
+                deque.append(Integer.valueOf(5));
+                deque.append(Integer.valueOf(2));
+                Integer expectedResult = 2;
+                Integer actualResult = deque.last();
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Size is 2")
+            void sizeIsOne() {
+                deque.append(Integer.valueOf(5));
+                deque.append(Integer.valueOf(2));
+                Integer expectedResult = 2;
+                Integer actualResult = deque.size();
+                assertEquals(expectedResult, actualResult);
+            }
+
+        }
+
+
+        @Nested
+        @DisplayName("Deleting first element from a deque that contains only the element 5")
+        class deletingFirstElementFromDequeThatContainsOneElement {
+            @Test
+            @DisplayName("First throws exception")
+            void firstElementIsNull() {
+                deque.append(Integer.valueOf(5));
+                deque.deleteFirst();
+                assertThrows(DoubleEndedQueueException.class, () -> deque.first());
+            }
+
+            @Test
+            @DisplayName("Last throws exception")
+            void lastElementIsFive() {
+                deque.append(Integer.valueOf(5));
+                deque.deleteFirst();
+                assertThrows(DoubleEndedQueueException.class, () -> deque.last());
+            }
+
+            @Test
+            @DisplayName("Size is 0")
+            void sizeIsOne() {
+                deque.append(Integer.valueOf(5));
+                deque.deleteFirst();
+                Integer expectedResult = 0;
+                Integer actualResult = deque.size();
+                assertEquals(expectedResult, actualResult);
+            }
+        }
+
+
+        @Nested
+        @DisplayName("Deleting first element from a deque that contains the elements 5 and 2")
+        class deletingFirstElementFromDequeThatContainsTwoElements {
+            @Test
+            @DisplayName("First is 2")
+            void firstElementIsTwo() {
+                deque.append(Integer.valueOf(5));
+                deque.append(Integer.valueOf(2));
+                deque.deleteFirst();
+                Integer expectedResult = 2;
+                Integer actualResult = deque.first();
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Last element is 2")
+            void lastElementIsFive() {
+                deque.append(Integer.valueOf(5));
+                deque.append(Integer.valueOf(2));
+                deque.deleteFirst();
+                Integer expectedResult = 2;
+                Integer actualResult = deque.last();
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Size is 1")
+            void sizeIsOne() {
+                deque.append(Integer.valueOf(5));
+                deque.append(Integer.valueOf(2));
+                deque.deleteFirst();
+                Integer expectedResult = 1;
+                Integer actualResult = deque.size();
+                assertEquals(expectedResult, actualResult);
+            }
+        }
+
+
+        @Nested
+        @DisplayName("Deleting last element from a deque that contains the elements 5 and 2")
+        class deletingLastElementFromDequeThatContainsTwoElements {
+            @Test
+            @DisplayName("First is 5")
+            void firstElementIsTwo() {
+                deque.append(Integer.valueOf(5));
+                deque.append(Integer.valueOf(2));
+                deque.deleteLast();
+                Integer expectedResult = 5;
+                Integer actualResult = deque.first();
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Last element is 5")
+            void lastElementIsFive() {
+                deque.append(Integer.valueOf(5));
+                deque.append(Integer.valueOf(2));
+                deque.deleteLast();
+                Integer expectedResult = 5;
+                Integer actualResult = deque.last();
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Size is 1")
+            void sizeIsOne() {
+                deque.append(Integer.valueOf(5));
+                deque.append(Integer.valueOf(2));
+                deque.deleteLast();
+                Integer expectedResult = 1;
+                Integer actualResult = deque.size();
+                assertEquals(expectedResult, actualResult);
+            }
+        }
     }
 }
