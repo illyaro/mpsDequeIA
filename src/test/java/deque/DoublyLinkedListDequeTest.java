@@ -37,6 +37,10 @@ DeleteFirst() of Deque containing 5: first() throws exception;
                                      last() throws exception;
                                      size() returns 0.
 
+DeleteLast() of Deque containing 5: first() throws exception;
+                                     last() throws exception;
+                                     size() returns 0.
+
 DeleteFirst() of Deque containing 5 and 2: first() returns 2;
                                            last() returns 2;
                                            size() returns 1.
