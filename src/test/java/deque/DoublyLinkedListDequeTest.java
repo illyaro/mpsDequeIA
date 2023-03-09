@@ -4,9 +4,46 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Aryan Dilip Sadhwani Sadhwani
+ * @author Illya Rozumovskyy
+ */
+
 /*
 TEST CASES:
-1.
+ size() of empty Deque is 0.
+ first() of empty Deque throws exception.
+ last() of empty Deque throws exception.
+ DeleteFirst on empty Deque throws exception.
+ DeleteLast on empty Deque throws exception.
+
+ Prepend 5 to empty Deque : first() returns 5;
+                            last() returns 5;
+                            size() returns 1.
+
+ Append 5 to empty Deque : first() returns 5;
+                           last() returns 5;
+                           size() returns 1.
+
+ Prepend 2 to Deque containing 5 : first() returns 2;
+                                   last() returns 5;
+                                   size() returns 2.
+
+ Append 2 to Deque containing 5 : first() returns 5;
+                                  last() returns 2;
+                                  size() returns 2.
+
+DeleteFirst() of Deque containing 5: first() throws exception;
+                                     last() throws exception;
+                                     size() returns 0.
+
+DeleteFirst() of Deque containing 5 and 2: first() returns 2;
+                                           last() returns 2;
+                                           size() returns 1.
+
+DeleteLast() of Deque containing 5 and 2: first() returns 5;
+                                           last() returns 5;
+                                           size() returns 1.
  */
 @DisplayName("Double Linked List Deque")
 class DoublyLinkedListDequeTest {
@@ -222,7 +259,6 @@ class DoublyLinkedListDequeTest {
                 Integer actualResult = deque.size();
                 assertEquals(expectedResult, actualResult);
             }
-
         }
 
 
