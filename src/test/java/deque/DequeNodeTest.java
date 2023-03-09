@@ -9,6 +9,29 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Illya Rozumovskyy
  */
 
+/*
+DEQUE NODE: TEST CASES
+1. Single Node:
+    a. Single node returns it's item when getItem is called
+    b. Single node returns null when next is called
+    c. Single node returns null when previous is called
+    d. Single node is the first node
+    e. Single node is the last node
+    f. Single node is a terminal node
+2. For prepended node:
+    a. Prepended node is the first node
+    b. Prepended node is NOT the last node
+    c. Prepended node is NOT a terminal node
+    d. The next node of prepended node is the first node
+    e. The previous node of prepended node is null
+3. For appended node:
+    a. Appended node is the last node
+    b. Appended node is NOT the first node
+    c. Appended node is NOT a terminal node
+    d. The previous node of appended node is the last node
+    e. The next node of appended node is null
+ */
+
 @DisplayName("Double Linked List: node test")
 class DequeNodeTest {
 
@@ -136,7 +159,7 @@ class DequeNodeTest {
 
         @Test
         @DisplayName("is the last node")
-        void prependedNodeIsFirstNode(){
+        void appendedNodeIsLastNode(){
             DequeNode<Integer> appended = appendNodeAfter(firstNode);
             Boolean actualValue = appended.isLastNode();
             assertTrue(actualValue);
@@ -144,7 +167,7 @@ class DequeNodeTest {
 
         @Test
         @DisplayName("is not the first node")
-        void prependedNodeIsNotLastNode(){
+        void appendedNodeIsNotFirstNode(){
             DequeNode<Integer> appended = appendNodeAfter(firstNode);
             Boolean actualValue = appended.isFirstNode();
             assertFalse(actualValue);
@@ -152,7 +175,7 @@ class DequeNodeTest {
 
         @Test
         @DisplayName("is not the terminal node")
-        void prependedNodeIsNotTerminalNode(){
+        void appendedNodeIsNotTerminalNode(){
             DequeNode<Integer> appended = appendNodeAfter(firstNode);
             Boolean actualValue = appended.isNotATerminalNode();
             assertFalse(actualValue);
@@ -160,7 +183,7 @@ class DequeNodeTest {
 
         @Test
         @DisplayName("return the previous node when getPrevious() is called")
-        void prependedNodeReturnsAFirstNodeWhenNextIsCalled(){
+        void appendedNodeReturnsALastNodeWhenPreviousIsCalled(){
             DequeNode<Integer> appended = appendNodeAfter(firstNode);
             DequeNode<Integer> expectedNode = firstNode;
             DequeNode<Integer> actualNode = appended.getPrevious();
@@ -169,7 +192,7 @@ class DequeNodeTest {
 
         @Test
         @DisplayName("returns null when getNext() is called")
-        void prependedNodeReturnsNullWhenPreviousIsCalled(){
+        void appendedNodeReturnsNullWhenNextIsCalled(){
             DequeNode<Integer> appended = appendNodeAfter(firstNode);
             DequeNode<Integer> actualNode = appended.getNext();
             assertNull(actualNode);
