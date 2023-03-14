@@ -97,12 +97,32 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public T get(int index) {
-        return null;
+        if(index < 0 || index >= this.size()) {
+            throw new IndexOutOfBoundsException("Index is invalid.");
+        } else {
+            DequeNode<T> node = this.first;
+            int i = 0;
+            while(i < index) {
+                i++;
+                node = node.getNext();
+            }
+            return node.getItem();
+        }
     }
 
     @Override
     public boolean contains(T value) {
-        return false;
+        boolean contains = false;
+        int index = 0;
+        DequeNode<T> node = this.first;
+        while(!contains && index < this.size()) {
+            if(node.getItem().equals(value)) {
+                contains = true;
+            } else {
+                node = node.getNext();
+            }
+        }
+        return contains;
     }
 
     @Override
