@@ -5,7 +5,7 @@ import java.util.Comparator;
 /**
  * @author Illya Rozumovskyy
  * @author Aryan Dilip Sadhwani Sadhwani
-*/
+ */
 
 public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
@@ -21,7 +21,7 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void prepend(T value) {
-        if(first == null) {
+        if (first == null) {
             DequeNode<T> node = new DequeNode<>(value, null, null);
             first = node;
             last = node;
@@ -36,7 +36,7 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void append(T value) {
-        if(last == null) {
+        if (last == null) {
             DequeNode<T> node = new DequeNode<>(value, null, null);
             last = node;
             first = node;
@@ -50,12 +50,12 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void deleteFirst() {
-        if(first == null) {
+        if (first == null) {
             throw new DoubleEndedQueueException("ERROR: Queue is empty.");
         } else {
             first = first.getNext();
             size--;
-            if(size == 0) {
+            if (size == 0) {
                 last = null;
             }
         }
@@ -63,12 +63,12 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void deleteLast() {
-        if(last == null) {
+        if (last == null) {
             throw new DoubleEndedQueueException("ERROR: Queue is empty.");
         } else {
             last = last.getPrevious();
             size--;
-            if(size == 0) {
+            if (size == 0) {
                 first = null;
             }
         }
@@ -76,7 +76,7 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public T first() {
-        if(first == null) {
+        if (first == null) {
             throw new DoubleEndedQueueException("ERROR: Queue is empty.");
         }
         return this.first.getItem();
@@ -84,7 +84,7 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public T last() {
-        if(last == null) {
+        if (last == null) {
             throw new DoubleEndedQueueException("ERROR: Queue is empty.");
         }
         return this.last.getItem();
@@ -112,6 +112,19 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void sort(Comparator<? super T> comparator) {
-
+        for(int i = 0; i < size; i++) {
+            DequeNode<T> current = first;
+            DequeNode<T> next = first.getNext();
+            for(int j = 0; j < size - 1; j++) {
+                if(comparator.compare(current.getItem(), next.getItem()) > 0) {
+                    T temp = current.getItem();
+                    current.setItem(next.getItem());
+                    next.setItem(temp);
+                }
+                current = current.getNext();
+                next = next.getNext();
+            }
+        }
     }
 }
+Bu
