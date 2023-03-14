@@ -510,6 +510,17 @@ class DoublyLinkedListDequeTest {
             boolean actualResult = deque.contains(value);
             assertEquals(expectedResult, actualResult);
         }
+
+        @Test
+        @DisplayName("Null object does not exist in the Deque")
+        void nullDoesNonExist(){
+            Integer value = null;
+            deque.append(2);
+            deque.append(4);
+            boolean expectedResult = false;
+            boolean actualResult = deque.contains(value);
+            assertEquals(expectedResult, actualResult);
+        }
     }
 
     @Nested
