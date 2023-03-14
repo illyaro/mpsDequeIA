@@ -102,3 +102,4 @@ public interface DoubleEndedQueue<T> {
      */
     void sort(Comparator<? super T> comparator);
 }
+
