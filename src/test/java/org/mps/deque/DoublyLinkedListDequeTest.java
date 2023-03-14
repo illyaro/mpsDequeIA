@@ -163,37 +163,37 @@ class DoublyLinkedListDequeTest {
             }
         }
 
-            @Nested
-            @DisplayName("Appending 5 to an empty deque")
-            class appendOneElementToEmptyDeque {
-                @Test
-                @DisplayName("First element is 5")
-                void firstElementOfDequeIsFive() {
-                    deque.append(5);
-                    Integer expectedResult = 5;
-                    Integer actualResult = deque.first();
-                    assertEquals(expectedResult, actualResult);
-                }
-
-                @Test
-                @DisplayName("Last element is 5")
-                void lastElementIsFive() {
-                    deque.append(5);
-                    Integer expectedResult = 5;
-                    Integer actualResult = deque.last();
-                    assertEquals(expectedResult, actualResult);
-                }
-
-                @Test
-                @DisplayName("Size is 1")
-                void sizeIsOne() {
-                    deque.append(5);
-                    Integer expectedResult = 1;
-                    Integer actualResult = deque.size();
-                    assertEquals(expectedResult, actualResult);
-                }
-
+        @Nested
+        @DisplayName("Appending 5 to an empty deque")
+        class appendOneElementToEmptyDeque {
+            @Test
+            @DisplayName("First element is 5")
+            void firstElementOfDequeIsFive() {
+                deque.append(5);
+                Integer expectedResult = 5;
+                Integer actualResult = deque.first();
+                assertEquals(expectedResult, actualResult);
             }
+
+            @Test
+            @DisplayName("Last element is 5")
+            void lastElementIsFive() {
+                deque.append(5);
+                Integer expectedResult = 5;
+                Integer actualResult = deque.last();
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Size is 1")
+            void sizeIsOne() {
+                deque.append(5);
+                Integer expectedResult = 1;
+                Integer actualResult = deque.size();
+                assertEquals(expectedResult, actualResult);
+            }
+
+        }
 
 
         @Nested
@@ -400,6 +400,115 @@ class DoublyLinkedListDequeTest {
                 Integer actualResult = deque.size();
                 assertEquals(expectedResult, actualResult);
             }
+        }
+    }
+
+    @Nested
+    @DisplayName("get tests")
+    class getTests {
+
+        @Test
+        @DisplayName("negative index throws exception.")
+        void negativeIndexThrowsException() {
+            int index = -1;
+            assertThrows(IndexOutOfBoundsException.class, () -> deque.get(index));
+        }
+
+        @Test
+        @DisplayName("index greater than size throws exception.")
+        void sizeIndexThrowsException() {
+            deque.append(1);
+            int index = 2;
+            assertThrows(IndexOutOfBoundsException.class, () -> deque.get(index));
+        }
+
+        @Test
+        @DisplayName("index 0 returns first element")
+        void indexZeroReturnsFirstElement() {
+            deque.append(1);
+            int index = 0;
+            Integer expectedResult = 1;
+            Integer actualResult = deque.get(index);
+            assertEquals(expectedResult, actualResult);
+        }
+
+        @Test
+        @DisplayName("index 1 returns second element")
+        void indexOneReturnsSecondElementInDequeWithThreeElements() {
+            deque.append(1);
+            deque.append(2);
+            deque.append(3);
+            int index = 1;
+            Integer expectedResult = 2;
+            Integer actualResult = deque.get(index);
+            assertEquals(expectedResult, actualResult);
+        }
+
+        @Test
+        @DisplayName("index size()-1 returns last element")
+        void lastIndexReturnsLastElementInDequeWithThreeElements() {
+            deque.append(1);
+            deque.append(2);
+            deque.append(3);
+            int index = deque.size() - 1;
+            Integer expectedResult = 3;
+            Integer actualResult = deque.get(index);
+            assertEquals(expectedResult, actualResult);
+        }
+    }
+
+    @Nested
+    @DisplayName("contains tests")
+    class containsTest {
+        @Test
+        @DisplayName("empty deque always returns false")
+        void emptyDequeReturnsFalseForAnyElement(){
+            Integer value = 2;
+            boolean expectedResult = false;
+            boolean actualResult = deque.contains(value);
+            assertEquals(expectedResult, actualResult);
+        }
+
+        @Test
+        @DisplayName("return false if doesnt contain element.")
+        void dequeReturnsFalseIfDoesntContainElement(){
+            Integer value = 2;
+            deque.append(1);
+            boolean expectedResult = false;
+            boolean actualResult = deque.contains(value);
+            assertEquals(expectedResult, actualResult);
+        }
+
+        @Test
+        @DisplayName("return true if it contains the element.")
+        void dequeReturnsTrueIfContainsElement(){
+            Integer value = 2;
+            deque.append(2);
+            boolean expectedResult = true;
+            boolean actualResult = deque.contains(value);
+            assertEquals(expectedResult, actualResult);
+        }
+
+        @Test
+        @DisplayName("return true if it contains the element.")
+        void dequeOfSize2ReturnsTrueIfContainsElement(){
+            Integer value = 4;
+            deque.append(2);
+            deque.append(4);
+            boolean expectedResult = true;
+            boolean actualResult = deque.contains(value);
+            assertEquals(expectedResult, actualResult);
+        }
+
+        @Test
+        @DisplayName("return false if it doesnt contains the element.")
+        void dequeOfSize2ReturnsFalseIfDoesntContainsElement(){
+            Integer value = 5;
+            deque.append(2);
+            deque.append(4);
+            boolean expectedResult = false;
+            boolean actualResult = deque.contains(value);
+            assertEquals(expectedResult, actualResult);
         }
     }
 }

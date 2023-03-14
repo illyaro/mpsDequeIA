@@ -121,6 +121,7 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
             } else {
                 node = node.getNext();
             }
+            index++;
         }
         return contains;
     }
