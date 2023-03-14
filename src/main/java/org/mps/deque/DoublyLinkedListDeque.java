@@ -1,5 +1,7 @@
 package org.mps.deque;
 
+import java.util.Comparator;
+
 /**
  * @author Illya Rozumovskyy
  * @author Aryan Dilip Sadhwani Sadhwani
@@ -91,5 +93,25 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
     @Override
     public int size() {
         return this.size;
+    }
+
+    @Override
+    public T get(int index) {
+        return null;
+    }
+
+    @Override
+    public boolean contains(T value) {
+        return false;
+    }
+
+    @Override
+    public void remove(T value) {
+
+    }
+
+    @Override
+    public void sort(Comparator<? super T> comparator) {
+
     }
 }
