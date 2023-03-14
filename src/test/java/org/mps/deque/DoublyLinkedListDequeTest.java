@@ -511,4 +511,51 @@ class DoublyLinkedListDequeTest {
             assertEquals(expectedResult, actualResult);
         }
     }
+
+    @Nested
+    @DisplayName("Remove method")
+    class remove {
+
+        @Test
+        @DisplayName("Does nothing when deque is empty")
+        void doesNothingWhenDequeIsEmpty(){
+            int expectedResult = 0;
+            deque.remove(4);
+            int actualResult = deque.size();
+        }
+
+        @Test
+        @DisplayName("Does nothng when element is not exist")
+        void doesNothingWhenElementIsNotExist(){
+            deque.append(4);
+            deque.append(5);
+            int expectedResult = deque.size();
+            deque.remove(1);
+            int actualResult = deque.size();
+            assertEquals(expectedResult, actualResult);
+        }
+
+        @Test
+        @DisplayName("Removes the single element and makes deque empty")
+        void RemovesTheSingleElementAndMakesDequeEmpty(){
+            deque.append(5);
+            deque.remove(5);
+            assertAll(
+                    () -> assertEquals(0, deque.size()),
+                    () -> assertThrows(DoubleEndedQueueException.class ,() -> deque.first()),
+                    () -> assertThrows(DoubleEndedQueueException.class ,() -> deque.last())
+            );
+        }
+
+        @Test
+        @DisplayName("Removes the first element from the deque")
+        void removesFirstElement(){
+            deque.append(1);
+            deque.append(2);
+            deque.remove(1);
+            Integer expectedResult = 2;
+            Integer actualResult = deque.first();
+            assertEquals(expectedResult, actualResult);
+        }
+    }
 }

@@ -128,13 +128,19 @@ public class DoublyLinkedListDeque<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void remove(T value) {
-        for(int i = 0; i< size; i++){
-            DequeNode<T> prev = null;
-            DequeNode<T> current = first;
-            if(current.getItem().equals(value)){
-                prev.setNext(current.getNext());
-                current = prev;
-                break;
+        if(this.contains(value)) {
+            DequeNode<T> node = this.first;
+            while(!node.getItem().equals(value)) {
+                node = node.getNext();
+            }
+            if(node.isFirstNode()) {
+                this.deleteFirst();
+            } else if(node.isLastNode()) {
+                this.deleteLast();
+            } else {
+                node.getPrevious().setNext(node.getNext());
+                node.getNext().setPrevious(node.getPrevious());
+                size--;
             }
         }
     }
