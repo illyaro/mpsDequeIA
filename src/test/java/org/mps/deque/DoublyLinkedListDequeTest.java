@@ -604,51 +604,17 @@ class DoublyLinkedListDequeTest {
                 deque.append(1);
                 deque.append(2);
                 deque.remove(1);
-                Integer expectedResult = 2;
-                Integer actualResult = deque.first();
-                assertEquals(expectedResult, actualResult);
-            }
-
-            @Test
-            @DisplayName("return false if doesnt contain element.")
-            void dequeReturnsFalseIfDoesntContainElement() {
-                Integer value = 2;
-                deque.append(1);
-                boolean expectedResult = false;
-                boolean actualResult = deque.contains(value);
-                assertEquals(expectedResult, actualResult);
-            }
-
-            @Test
-            @DisplayName("return true if it contains the element.")
-            void dequeReturnsTrueIfContainsElement() {
-                Integer value = 2;
-                deque.append(2);
-                boolean expectedResult = true;
-                boolean actualResult = deque.contains(value);
-                assertEquals(expectedResult, actualResult);
-            }
-
-            @Test
-            @DisplayName("return true if it contains the element.")
-            void dequeOfSize2ReturnsTrueIfContainsElement() {
-                Integer value = 4;
-                deque.append(2);
-                deque.append(4);
-                boolean expectedResult = true;
-                boolean actualResult = deque.contains(value);
-                assertEquals(expectedResult, actualResult);
-            }
-
-            @Test
-            @DisplayName("return false if it doesnt contains the element.")
-            void dequeOfSize2ReturnsFalseIfDoesntContainsElement() {
-                Integer value = 5;
-                deque.append(2);
-                deque.append(4);
-                boolean expectedResult = false;
-                boolean actualResult = deque.contains(value);
-                assertEquals(expectedResult, actualResult);
+                int expectedSize = 1;
+                int actualSize = deque.size();
+                Integer expectedFirst = 2;
+                Integer actualFirst = deque.first();
+                Integer expectedLast = 2;
+                Integer actualLast = deque.last();
+                assertAll(
+                        () -> assertEquals(expectedSize, actualSize),
+                        () -> assertEquals(expectedFirst, actualFirst),
+                        () -> assertEquals(expectedLast, actualLast)
+                );
             }
 
             @Test
@@ -660,6 +626,45 @@ class DoublyLinkedListDequeTest {
                 boolean expectedResult = false;
                 boolean actualResult = deque.contains(value);
                 assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Removes the last element of the deque")
+            void removesLastElement() {
+                deque.append(1);
+                deque.append(2);
+                deque.remove(2);
+                int expectedSize = 1;
+                int actualSize = deque.size();
+                Integer expectedFirst = 1;
+                Integer actualFirst = deque.first();
+                Integer expectedLast = 1;
+                Integer actualLast = deque.last();
+                assertAll(
+                        () -> assertEquals(expectedSize, actualSize),
+                        () -> assertEquals(expectedFirst, actualFirst),
+                        () -> assertEquals(expectedLast, actualLast)
+                );
+            }
+
+            @Test
+            @DisplayName("Removes the middle element of the deque")
+            void removesMiddleElement() {
+                deque.append(1);
+                deque.append(2);
+                deque.append(3);
+                deque.remove(2);
+                int expectedSize = 2;
+                int actualSize = deque.size();
+                Integer expectedFirst = 1;
+                Integer actualFirst = deque.first();
+                Integer expectedLast = 3;
+                Integer actualLast = deque.last();
+                assertAll(
+                        () -> assertEquals(expectedSize, actualSize),
+                        () -> assertEquals(expectedFirst, actualFirst),
+                        () -> assertEquals(expectedLast, actualLast)
+                );
             }
         }
 
