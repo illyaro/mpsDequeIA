@@ -55,14 +55,29 @@ Double Linked List Deque Test Cases:
         iii. Returns the fist element when index is 0.
         iv. Returns the second element when index is 1.
         v. Returns the last element when index is size of Deque - 1.
-    b. contains() method:
+    b. contains() an element method:
         i. Returns false for any element when Deque is empty.
         ii. Returns false when Deque of size 1 does not contain the element.
         iii. Returns true when Deque of size 1 contains the element.
         iv. Returns true when Deque of size 2 contain the element.
         v. Returns false when Deque of size 2 does not contain the element.
         vi. Returns false when null is passed.
-    c. remove() method:
+    c. remove() an element method:
+        i. Does nothing when deque is empty.
+        ii. Does nothing when element is not present in Deque.
+        iii. Removes the single element from Deque is of size 1 and:    first() throws exception;
+                                                                        last() throws exception;
+                                                                        size() returns 0.
+        iv. Finds and removes the first element from Deque that has 1 & 2 and:  first() returns 2;
+                                                                                last() returns 2;
+                                                                                size() returns 1.
+        v. Finds and removes the last element from Deque that has 1 & 2 and:   first() returns 1;
+                                                                                last() returns 1;
+                                                                                size() returns 1.
+        vi. Finds and removes the middle element from Deque that has 1, 2 & 3 and:  first() returns 1;
+                                                                                    last() returns 3;
+                                                                                    size() returns 2.
+
     d. sort() method:
         i. Return an empty Deque when Deque is empty.
         ii. Return the same Deque of size 1 when applied to Deque is of size 1.
@@ -70,7 +85,6 @@ Double Linked List Deque Test Cases:
         iv. Returns a sorted Deque of size 2 when applied to sorted Deque is of size 2.
         v. Returns a sorted Deque of size 3 when applied to unsorted Deque is of size 3.
         vi. Returns a sorted Deque of size 3 when applied to sorted Deque is of size 3.
-
  */
 
 @DisplayName("Double Linked List Deque")
