@@ -77,7 +77,10 @@ Double Linked List Deque Test Cases:
         vi. Finds and removes the middle element from Deque that has 1, 2 & 3 and:  first() returns 1;
                                                                                     last() returns 3;
                                                                                     size() returns 2.
-
+        vii. Finds and removes first occurrence of 1 from Deque that has 1, 2, 1, 3 and:    first() returns 2;
+                                                                                            get(1) returns 1;
+                                                                                            last() returns 3;
+                                                                                            size() returns 3.
     d. sort() method:
         i. Return an empty Deque when Deque is empty.
         ii. Return the same Deque of size 1 when applied to Deque is of size 1.
@@ -669,6 +672,31 @@ class DoublyLinkedListDequeTest {
                         () -> assertEquals(expectedLast, actualLast)
                 );
             }
+
+            @Test
+            @DisplayName("Removes the first occurrence of the element")
+            void removesFirstOccurrenceOfElement() {
+                deque.append(1);
+                deque.append(2);
+                deque.append(1);
+                deque.append(3);
+                deque.remove(1);
+                int expectedSize = 3;
+                int actualSize = deque.size();
+                Integer expectedFirst = 2;
+                Integer actualFirst = deque.first();
+                Integer expectedSecond = 1;
+                Integer actualSecond = deque.get(1);
+                Integer expectedLast = 3;
+                Integer actualLast = deque.last();
+                assertAll(
+                        () -> assertEquals(expectedSize, actualSize),
+                        () -> assertEquals(expectedFirst, actualFirst),
+                        () -> assertEquals(expectedSecond, actualSecond),
+                        () -> assertEquals(expectedLast, actualLast)
+                );
+            }
+
         }
 
         @Nested
