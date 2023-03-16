@@ -65,13 +65,13 @@ Double Linked List Deque Test Cases:
     c. remove() an element method:
         i. Does nothing when deque is empty.
         ii. Does nothing when element is not present in Deque.
-        iii. Removes the single element from Deque is of size 1 and:    first() throws exception;
-                                                                        last() throws exception;
-                                                                        size() returns 0.
+        iii. Finds and removes the single element from Deque is of size 1 and:  first() throws exception;
+                                                                                last() throws exception;
+                                                                                size() returns 0.
         iv. Finds and removes the first element from Deque that has 1 & 2 and:  first() returns 2;
                                                                                 last() returns 2;
                                                                                 size() returns 1.
-        v. Finds and removes the last element from Deque that has 1 & 2 and:   first() returns 1;
+        v. Finds and removes the last element from Deque that has 1 & 2 and:    first() returns 1;
                                                                                 last() returns 1;
                                                                                 size() returns 1.
         vi. Finds and removes the middle element from Deque that has 1, 2 & 3 and:  first() returns 1;
