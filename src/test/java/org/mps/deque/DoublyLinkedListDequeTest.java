@@ -533,10 +533,11 @@ class DoublyLinkedListDequeTest {
             int expectedResult = 0;
             deque.remove(4);
             int actualResult = deque.size();
+            assertEquals(expectedResult,actualResult);
         }
 
         @Test
-        @DisplayName("Does nothng when element is not exist")
+        @DisplayName("Does nothing when element is not exist")
         void doesNothingWhenElementIsNotExist(){
             deque.append(4);
             deque.append(5);
