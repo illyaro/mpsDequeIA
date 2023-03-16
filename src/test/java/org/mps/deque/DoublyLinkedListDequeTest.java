@@ -472,7 +472,7 @@ class DoublyLinkedListDequeTest {
 
             @Test
             @DisplayName("index greater than size throws exception.")
-            void greatherThanSizeIndexThrowsException() {
+            void greaterThanSizeIndexThrowsException() {
                 deque.append(1);
                 int index = 2;
                 assertThrows(IndexOutOfBoundsException.class, () -> deque.get(index));
@@ -517,7 +517,7 @@ class DoublyLinkedListDequeTest {
         @DisplayName("with contains() method")
         class containsTest {
             @Test
-            @DisplayName("empty deque always returns false")
+            @DisplayName("returns false if deque is empty")
             void emptyDequeReturnsFalseForAnyElement() {
                 Integer value = 2;
                 boolean expectedResult = false;
@@ -526,7 +526,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("return false if doesnt contain element.")
+            @DisplayName("return false if doesn't the contain element.")
             void dequeReturnsFalseIfDoesntContainElement() {
                 Integer value = 2;
                 deque.append(1);
@@ -536,7 +536,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("return true if it contains the element.")
+            @DisplayName("return true if deque of size 1 contains the element.")
             void dequeReturnsTrueIfContainsElement() {
                 Integer value = 2;
                 deque.append(2);
@@ -546,7 +546,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("return true if it contains the element.")
+            @DisplayName("return true if deque of size 2 contains the element.")
             void dequeOfSize2ReturnsTrueIfContainsElement() {
                 Integer value = 4;
                 deque.append(2);
@@ -557,7 +557,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("return false if it doesnt contains the element.")
+            @DisplayName("return false if deque of size 2 doesn't contain the element.")
             void dequeOfSize2ReturnsFalseIfDoesntContainsElement() {
                 Integer value = 5;
                 deque.append(2);
@@ -568,7 +568,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Null object does not exist in the Deque")
+            @DisplayName("null value returns false")
             void nullDoesNonExist() {
                 Integer value = null;
                 deque.append(2);
@@ -593,7 +593,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Does nothing when element is not exist")
+            @DisplayName("does nothing when element is not present in deque")
             void doesNothingWhenElementIsNotExist() {
                 deque.append(4);
                 deque.append(5);
@@ -604,7 +604,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Removes the single element and makes deque empty")
+            @DisplayName("returns empty deque when removing the only element in the deque")
             void RemovesTheSingleElementAndMakesDequeEmpty() {
                 deque.append(5);
                 deque.remove(5);
@@ -616,7 +616,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Removes the first element from the deque")
+            @DisplayName("removes the first element from deque that contains 2 elements")
             void removesFirstElement() {
                 deque.append(1);
                 deque.append(2);
@@ -635,7 +635,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Removes the last element of the deque")
+            @DisplayName("removes the last element from deque that contains 2 elements")
             void removesLastElement() {
                 deque.append(1);
                 deque.append(2);
@@ -654,7 +654,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Removes the middle element of the deque")
+            @DisplayName("removes the middle element of a deque with 3 elements")
             void removesMiddleElement() {
                 deque.append(1);
                 deque.append(2);
@@ -713,7 +713,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("sort deque with one element.")
+            @DisplayName("sort deque with one element returns same deque.")
             void sortDequeWithOneElement() {
                 int expectedSize = 1;
                 deque.append(2);
@@ -732,7 +732,7 @@ class DoublyLinkedListDequeTest {
 
 
             @Test
-            @DisplayName("sort deque with two elements.")
+            @DisplayName("sort deque with two elements returns ordered deque.")
             void sortDequeWithTwoElements() {
                 int expectedSize = 2;
                 deque.append(2);
@@ -751,7 +751,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("sort deque with two ordered elements.")
+            @DisplayName("sort deque with two already ordered elements returns the same deque.")
             void sortDequeWithTwoOrderedElements() {
                 int expectedSize = 2;
                 deque.append(1);
@@ -770,7 +770,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("sort deque with three elements.")
+            @DisplayName("sort deque with three elements returns ordered deque.")
             void sortDequeWithThreeElements() {
                 int expectedSize = 3;
                 deque.append(2);
@@ -790,7 +790,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("sort deque with three ordered elements.")
+            @DisplayName("sort deque with three already ordered elements returns the same deque.")
             void sortDequeWithThreeSortedElements() {
                 int expectedSize = 3;
                 deque.append(1);
