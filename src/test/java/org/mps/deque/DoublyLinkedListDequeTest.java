@@ -10,6 +10,48 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 /*
+Double Linked List Deque Test Cases:
+1. With empty Deque:
+    a. size() returns 0.
+    b. first() throws DoubleEndedQueueException exception.
+    c. last() throws DoubleEndedQueueException exception.
+    d. DeleteFirst() throws DoubleEndedQueueException exception.
+    e. DeleteLast() throws DoubleEndedQueueException exception.
+        i. Exception message is correct for first() method when Deque is empty.
+        ii. Exception message is correct for last() method when Deque is empty.
+        iii. Exception message is correct for DeleteFirst() when Deque is empty.
+        iv. Exception message is correct for DeleteLast() when Deque is empty.
+2. With Valid Deque:
+    a. Prepend 5 to empty Deque : first() returns 5;
+                                  last() returns 5;
+                                  size() returns 1.
+    b. Append 5 to empty Deque : first() returns 5;
+                                 last() returns 5;
+                                 size() returns 1.
+    c. Prepend 2 to Deque containing 5 : first() returns 2;
+                                         last() returns 5;
+                                         size() returns 2.
+    d. Append 2 to Deque containing 5 : first() returns 5;
+                                        last() returns 2;
+                                        size() returns 2.
+    e. DeleteFirst() of Deque containing 5: first() throws exception;
+                                            last() throws exception;
+                                            size() returns 0.
+    f. DeleteLast() of Deque containing 5: first() throws exception;
+                                           last() throws exception;
+                                           size() returns 0.
+    g. DeleteFirst() of Deque containing 5 and 2: first() returns 2;
+                                                  last() returns 2;
+                                                  size() returns 1.
+    h. DeleteLast() of Deque containing 5 and 2: first() returns 5;
+                                                 last() returns 5;
+                                                 size() returns 1.
+3. Advanced Deque operations:
+
+ */
+
+
+/*
 TEST CASES:
  size() of empty Deque is 0.
  first() of empty Deque throws exception.
@@ -48,7 +90,8 @@ DeleteFirst() of Deque containing 5 and 2: first() returns 2;
 DeleteLast() of Deque containing 5 and 2: first() returns 5;
                                            last() returns 5;
                                            size() returns 1.
- */
+ */ // Potentially have to be removed
+
 @DisplayName("Double Linked List Deque")
 class DoublyLinkedListDequeTest {
 
@@ -86,6 +129,18 @@ class DoublyLinkedListDequeTest {
         @DisplayName("Exception is thrown when last is called")
         void emptyDequeThrowsAnExceptionWhenLastIsCalled() {
             assertThrows(DoubleEndedQueueException.class, () -> deque.last());
+        }
+
+        @Test
+        @DisplayName("Exception is thrown when delete first is called")
+        void emptyDequeThrowsAnExceptionWhenDeleteFirstIsCalled() {
+            assertThrows(DoubleEndedQueueException.class, () -> deque.deleteFirst());
+        }
+
+        @Test
+        @DisplayName("Exception is thrown when delete last is called")
+        void emptyDequeThrowsAnExceptionWhenDeleteLastIsCalled() {
+            assertThrows(DoubleEndedQueueException.class, () -> deque.deleteLast());
         }
 
         @Nested
@@ -130,7 +185,7 @@ class DoublyLinkedListDequeTest {
     }
 
     @Nested
-    @DisplayName("With valid deque")
+    @DisplayName("Basic operations with valid deque which size is greater than zero")
     class validDequeTests {
         @Nested
         @DisplayName("Prepending 5 to an empty deque")
@@ -271,7 +326,7 @@ class DoublyLinkedListDequeTest {
         class deletingFirstElementFromDequeThatContainsOneElement {
             @Test
             @DisplayName("First throws exception")
-            void firstElementIsNull() {
+            void firstMethodThrowsException() {
                 deque.append(5);
                 deque.deleteFirst();
                 assertThrows(DoubleEndedQueueException.class, () -> deque.first());
@@ -279,7 +334,7 @@ class DoublyLinkedListDequeTest {
 
             @Test
             @DisplayName("Last throws exception")
-            void lastElementIsFive() {
+            void lastMethodThrowsException() {
                 deque.append(5);
                 deque.deleteFirst();
                 assertThrows(DoubleEndedQueueException.class, () -> deque.last());
@@ -301,7 +356,7 @@ class DoublyLinkedListDequeTest {
         class deletingLastElementFromDequeThatContainsOneElement {
             @Test
             @DisplayName("First throws exception")
-            void firstElementIsNull() {
+            void firstMethodThrowsException() {
                 deque.append(5);
                 deque.deleteLast();
                 assertThrows(DoubleEndedQueueException.class, () -> deque.first());
@@ -309,7 +364,7 @@ class DoublyLinkedListDequeTest {
 
             @Test
             @DisplayName("Last throws exception")
-            void lastElementIsFive() {
+            void lastMethodThrowsException() {
                 deque.append(5);
                 deque.deleteLast();
                 assertThrows(DoubleEndedQueueException.class, () -> deque.last());
@@ -317,7 +372,7 @@ class DoublyLinkedListDequeTest {
 
             @Test
             @DisplayName("Size is 0")
-            void sizeIsOne() {
+            void sizeIsZero() {
                 deque.append(5);
                 deque.deleteLast();
                 Integer expectedResult = 0;
@@ -343,7 +398,7 @@ class DoublyLinkedListDequeTest {
 
             @Test
             @DisplayName("Last element is 2")
-            void lastElementIsFive() {
+            void lastElementIsTwo() {
                 deque.append(5);
                 deque.append(2);
                 deque.deleteFirst();
@@ -353,7 +408,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Size is 1")
+            @DisplayName("Size is One")
             void sizeIsOne() {
                 deque.append(5);
                 deque.append(2);
@@ -370,7 +425,7 @@ class DoublyLinkedListDequeTest {
         class deletingLastElementFromDequeThatContainsTwoElements {
             @Test
             @DisplayName("First is 5")
-            void firstElementIsTwo() {
+            void firstElementIsFive() {
                 deque.append(5);
                 deque.append(2);
                 deque.deleteLast();
@@ -404,170 +459,174 @@ class DoublyLinkedListDequeTest {
     }
 
     @Nested
-    @DisplayName("get tests")
-    class getTests {
+    @DisplayName("Advanced Deque operations")
+    class advancedDequeOperations {
+        @Nested
+        @DisplayName("with get() method")
+        class getTests {
 
-        @Test
-        @DisplayName("negative index throws exception.")
-        void negativeIndexThrowsException() {
-            int index = -1;
-            assertThrows(IndexOutOfBoundsException.class, () -> deque.get(index));
+            @Test
+            @DisplayName("negative index throws exception.")
+            void negativeIndexThrowsException() {
+                int index = -1;
+                assertThrows(IndexOutOfBoundsException.class, () -> deque.get(index));
+            }
+
+            @Test
+            @DisplayName("index greater than size throws exception.")
+            void sizeIndexThrowsException() {
+                deque.append(1);
+                int index = 2;
+                assertThrows(IndexOutOfBoundsException.class, () -> deque.get(index));
+            }
+
+            @Test
+            @DisplayName("index 0 returns first element")
+            void indexZeroReturnsFirstElement() {
+                deque.append(1);
+                int index = 0;
+                Integer expectedResult = 1;
+                Integer actualResult = deque.get(index);
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("index 1 returns second element")
+            void indexOneReturnsSecondElementInDequeWithThreeElements() {
+                deque.append(1);
+                deque.append(2);
+                deque.append(3);
+                int index = 1;
+                Integer expectedResult = 2;
+                Integer actualResult = deque.get(index);
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("index size()-1 returns last element")
+            void lastIndexReturnsLastElementInDequeWithThreeElements() {
+                deque.append(1);
+                deque.append(2);
+                deque.append(3);
+                int index = deque.size() - 1;
+                Integer expectedResult = 3;
+                Integer actualResult = deque.get(index);
+                assertEquals(expectedResult, actualResult);
+            }
         }
 
-        @Test
-        @DisplayName("index greater than size throws exception.")
-        void sizeIndexThrowsException() {
-            deque.append(1);
-            int index = 2;
-            assertThrows(IndexOutOfBoundsException.class, () -> deque.get(index));
+        @Nested
+        @DisplayName("with contains() method")
+        class containsTest {
+            @Test
+            @DisplayName("empty deque always returns false")
+            void emptyDequeReturnsFalseForAnyElement() {
+                Integer value = 2;
+                boolean expectedResult = false;
+                boolean actualResult = deque.contains(value);
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("return false if doesnt contain element.")
+            void dequeReturnsFalseIfDoesntContainElement() {
+                Integer value = 2;
+                deque.append(1);
+                boolean expectedResult = false;
+                boolean actualResult = deque.contains(value);
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("return true if it contains the element.")
+            void dequeReturnsTrueIfContainsElement() {
+                Integer value = 2;
+                deque.append(2);
+                boolean expectedResult = true;
+                boolean actualResult = deque.contains(value);
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("return true if it contains the element.")
+            void dequeOfSize2ReturnsTrueIfContainsElement() {
+                Integer value = 4;
+                deque.append(2);
+                deque.append(4);
+                boolean expectedResult = true;
+                boolean actualResult = deque.contains(value);
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("return false if it doesnt contains the element.")
+            void dequeOfSize2ReturnsFalseIfDoesntContainsElement() {
+                Integer value = 5;
+                deque.append(2);
+                deque.append(4);
+                boolean expectedResult = false;
+                boolean actualResult = deque.contains(value);
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Null object does not exist in the Deque")
+            void nullDoesNonExist() {
+                Integer value = null;
+                deque.append(2);
+                deque.append(4);
+                boolean expectedResult = false;
+                boolean actualResult = deque.contains(value);
+                assertEquals(expectedResult, actualResult);
+            }
         }
 
-        @Test
-        @DisplayName("index 0 returns first element")
-        void indexZeroReturnsFirstElement() {
-            deque.append(1);
-            int index = 0;
-            Integer expectedResult = 1;
-            Integer actualResult = deque.get(index);
-            assertEquals(expectedResult, actualResult);
-        }
+        @Nested
+        @DisplayName("with remove() method")
+        class remove {
 
-        @Test
-        @DisplayName("index 1 returns second element")
-        void indexOneReturnsSecondElementInDequeWithThreeElements() {
-            deque.append(1);
-            deque.append(2);
-            deque.append(3);
-            int index = 1;
-            Integer expectedResult = 2;
-            Integer actualResult = deque.get(index);
-            assertEquals(expectedResult, actualResult);
-        }
+            @Test
+            @DisplayName("Does nothing when deque is empty")
+            void doesNothingWhenDequeIsEmpty() {
+                int expectedResult = 0;
+                deque.remove(4);
+                int actualResult = deque.size();
+                assertEquals(expectedResult, actualResult);
+            }
 
-        @Test
-        @DisplayName("index size()-1 returns last element")
-        void lastIndexReturnsLastElementInDequeWithThreeElements() {
-            deque.append(1);
-            deque.append(2);
-            deque.append(3);
-            int index = deque.size() - 1;
-            Integer expectedResult = 3;
-            Integer actualResult = deque.get(index);
-            assertEquals(expectedResult, actualResult);
-        }
-    }
+            @Test
+            @DisplayName("Does nothing when element is not exist")
+            void doesNothingWhenElementIsNotExist() {
+                deque.append(4);
+                deque.append(5);
+                int expectedResult = deque.size();
+                deque.remove(1);
+                int actualResult = deque.size();
+                assertEquals(expectedResult, actualResult);
+            }
 
-    @Nested
-    @DisplayName("contains tests")
-    class containsTest {
-        @Test
-        @DisplayName("empty deque always returns false")
-        void emptyDequeReturnsFalseForAnyElement(){
-            Integer value = 2;
-            boolean expectedResult = false;
-            boolean actualResult = deque.contains(value);
-            assertEquals(expectedResult, actualResult);
-        }
+            @Test
+            @DisplayName("Removes the single element and makes deque empty")
+            void RemovesTheSingleElementAndMakesDequeEmpty() {
+                deque.append(5);
+                deque.remove(5);
+                assertAll(
+                        () -> assertEquals(0, deque.size()),
+                        () -> assertThrows(DoubleEndedQueueException.class, () -> deque.first()),
+                        () -> assertThrows(DoubleEndedQueueException.class, () -> deque.last())
+                );
+            }
 
-        @Test
-        @DisplayName("return false if doesnt contain element.")
-        void dequeReturnsFalseIfDoesntContainElement(){
-            Integer value = 2;
-            deque.append(1);
-            boolean expectedResult = false;
-            boolean actualResult = deque.contains(value);
-            assertEquals(expectedResult, actualResult);
-        }
-
-        @Test
-        @DisplayName("return true if it contains the element.")
-        void dequeReturnsTrueIfContainsElement(){
-            Integer value = 2;
-            deque.append(2);
-            boolean expectedResult = true;
-            boolean actualResult = deque.contains(value);
-            assertEquals(expectedResult, actualResult);
-        }
-
-        @Test
-        @DisplayName("return true if it contains the element.")
-        void dequeOfSize2ReturnsTrueIfContainsElement(){
-            Integer value = 4;
-            deque.append(2);
-            deque.append(4);
-            boolean expectedResult = true;
-            boolean actualResult = deque.contains(value);
-            assertEquals(expectedResult, actualResult);
-        }
-
-        @Test
-        @DisplayName("return false if it doesnt contains the element.")
-        void dequeOfSize2ReturnsFalseIfDoesntContainsElement(){
-            Integer value = 5;
-            deque.append(2);
-            deque.append(4);
-            boolean expectedResult = false;
-            boolean actualResult = deque.contains(value);
-            assertEquals(expectedResult, actualResult);
-        }
-
-        @Test
-        @DisplayName("Null object does not exist in the Deque")
-        void nullDoesNonExist(){
-            Integer value = null;
-            deque.append(2);
-            deque.append(4);
-            boolean expectedResult = false;
-            boolean actualResult = deque.contains(value);
-            assertEquals(expectedResult, actualResult);
-        }
-    }
-
-    @Nested
-    @DisplayName("Remove method")
-    class remove {
-
-        @Test
-        @DisplayName("Does nothing when deque is empty")
-        void doesNothingWhenDequeIsEmpty(){
-            int expectedResult = 0;
-            deque.remove(4);
-            int actualResult = deque.size();
-            assertEquals(expectedResult,actualResult);
-        }
-
-        @Test
-        @DisplayName("Does nothing when element is not exist")
-        void doesNothingWhenElementIsNotExist(){
-            deque.append(4);
-            deque.append(5);
-            int expectedResult = deque.size();
-            deque.remove(1);
-            int actualResult = deque.size();
-            assertEquals(expectedResult, actualResult);
-        }
-
-        @Test
-        @DisplayName("Removes the single element and makes deque empty")
-        void RemovesTheSingleElementAndMakesDequeEmpty(){
-            deque.append(5);
-            deque.remove(5);
-            assertAll(
-                    () -> assertEquals(0, deque.size()),
-                    () -> assertThrows(DoubleEndedQueueException.class ,() -> deque.first()),
-                    () -> assertThrows(DoubleEndedQueueException.class ,() -> deque.last())
-            );
-        }
-
-        @Test
-        @DisplayName("Removes the first element from the deque")
-        void removesFirstElement(){
-            deque.append(1);
-            deque.append(2);
-            deque.remove(1);
-            Integer expectedResult = 2;
-            Integer actualResult = deque.first();
-            assertEquals(expectedResult, actualResult);
+            @Test
+            @DisplayName("Removes the first element from the deque")
+            void removesFirstElement() {
+                deque.append(1);
+                deque.append(2);
+                deque.remove(1);
+                Integer expectedResult = 2;
+                Integer actualResult = deque.first();
+                assertEquals(expectedResult, actualResult);
+            }
         }
     }
 }
