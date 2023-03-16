@@ -568,9 +568,57 @@ class DoublyLinkedListDequeTest {
             deque.append(1);
             deque.append(2);
             deque.remove(1);
-            Integer expectedResult = 2;
-            Integer actualResult = deque.first();
-            assertEquals(expectedResult, actualResult);
+            Integer expectedFirst = 2;
+            Integer actualFirst = deque.first();
+            Integer expectedLast = 2;
+            Integer actualLast = deque.last();
+            Integer expectedSize = 1;
+            Integer actualSize = deque.size();
+            assertAll(
+                    () -> assertEquals(expectedSize, actualSize),
+                    () -> assertEquals(expectedFirst, actualFirst),
+                    () -> assertEquals(expectedLast, actualLast)
+            );
+
+        }
+
+        @Test
+        @DisplayName("Removes the last element from the deque")
+        void removesLastElement(){
+            deque.append(1);
+            deque.append(2);
+            deque.remove(2);
+            Integer expectedSize = 1;
+            Integer actualSize = deque.size();
+            Integer expectedFirst = 1;
+            Integer actualFirst = deque.first();
+            Integer expectedLast = 1;
+            Integer actualLast = deque.last();
+            assertAll(
+                    () -> assertEquals(expectedSize, actualSize),
+                    () -> assertEquals(expectedFirst, actualFirst),
+                    () -> assertEquals(expectedLast, actualLast)
+            );
+        }
+
+        @Test
+        @DisplayName("Removes a middle element from the deque")
+        void removesMiddleElement(){
+            deque.append(1);
+            deque.append(2);
+            deque.append(3);
+            deque.remove(2);
+            Integer expectedSize = 2;
+            Integer actualSize = deque.size();
+            Integer expectedFirst = 1;
+            Integer actualFirst = deque.first();
+            Integer expectedLast = 3;
+            Integer actualLast = deque.last();
+            assertAll(
+                    () -> assertEquals(expectedSize, actualSize),
+                    () -> assertEquals(expectedFirst, actualFirst),
+                    () -> assertEquals(expectedLast, actualLast)
+            );
         }
     }
 
@@ -594,10 +642,14 @@ class DoublyLinkedListDequeTest {
             deque.append(2);
             deque.sort(Comparator.naturalOrder());
             int actualSize = deque.size();
+            Integer expectedFirst = 2;
+            Integer actualFirst = deque.first();
+            Integer expectedLast = 2;
+            Integer actualLast = deque.last();
             assertAll(
                     () -> assertEquals(expectedSize, actualSize),
-                    () -> assertEquals(2, deque.first()),
-                    () -> assertEquals(2, deque.last())
+                    () -> assertEquals(expectedFirst, actualFirst),
+                    () -> assertEquals(expectedLast, actualLast)
             );
         }
 
@@ -610,25 +662,33 @@ class DoublyLinkedListDequeTest {
             deque.append(1);
             deque.sort(Comparator.naturalOrder());
             int actualSize = deque.size();
+            Integer expectedFirst = 1;
+            Integer actualFirst = deque.first();
+            Integer expectedLast = 2;
+            Integer actualLast = deque.last();
             assertAll(
                     () -> assertEquals(expectedSize, actualSize),
-                    () -> assertEquals(1, deque.first()),
-                    () -> assertEquals(2, deque.last())
+                    () -> assertEquals(expectedFirst, actualFirst),
+                    () -> assertEquals(expectedLast, actualLast)
             );
         }
 
         @Test
-        @DisplayName("sort deque with two elements.")
+        @DisplayName("sort deque with two ordered elements.")
         void sortDequeWithTwoOrderedElements() {
             int expectedSize = 2;
             deque.append(1);
             deque.append(2);
             deque.sort(Comparator.naturalOrder());
             int actualSize = deque.size();
+            Integer expectedFirst = 1;
+            Integer actualFirst = deque.first();
+            Integer expectedLast = 2;
+            Integer actualLast = deque.last();
             assertAll(
                     () -> assertEquals(expectedSize, actualSize),
-                    () -> assertEquals(1, deque.first()),
-                    () -> assertEquals(2, deque.last())
+                    () -> assertEquals(expectedFirst, actualFirst),
+                    () -> assertEquals(expectedLast, actualLast)
             );
         }
 
@@ -641,10 +701,14 @@ class DoublyLinkedListDequeTest {
             deque.append(1);
             deque.sort(Comparator.naturalOrder());
             int actualSize = deque.size();
+            Integer expectedFirst = 1;
+            Integer actualFirst = deque.first();
+            Integer expectedLast = 3;
+            Integer actualLast = deque.last();
             assertAll(
                     () -> assertEquals(expectedSize, actualSize),
-                    () -> assertEquals(1, deque.first()),
-                    () -> assertEquals(3, deque.last())
+                    () -> assertEquals(expectedFirst, actualFirst),
+                    () -> assertEquals(expectedLast, actualLast)
             );
         }
 
@@ -657,10 +721,14 @@ class DoublyLinkedListDequeTest {
             deque.append(3);
             deque.sort(Comparator.naturalOrder());
             int actualSize = deque.size();
+            Integer expectedFirst = 1;
+            Integer actualFirst = deque.first();
+            Integer expectedLast = 3;
+            Integer actualLast = deque.last();
             assertAll(
                     () -> assertEquals(expectedSize, actualSize),
-                    () -> assertEquals(1, deque.first()),
-                    () -> assertEquals(3, deque.last())
+                    () -> assertEquals(expectedFirst, actualFirst),
+                    () -> assertEquals(expectedLast, actualLast)
             );
         }
 
