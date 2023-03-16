@@ -569,4 +569,12 @@ class DoublyLinkedListDequeTest {
             assertEquals(expectedResult, actualResult);
         }
     }
+
+    @Nested
+    @DisplayName("Sort method")
+    class sort {
+
+
+    }
+
 }
