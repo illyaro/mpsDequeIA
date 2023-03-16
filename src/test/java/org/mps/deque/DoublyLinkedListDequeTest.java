@@ -2,6 +2,8 @@ package org.mps.deque;
 
 import org.junit.jupiter.api.*;
 
+import java.util.Comparator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -627,6 +629,171 @@ class DoublyLinkedListDequeTest {
                 Integer actualResult = deque.first();
                 assertEquals(expectedResult, actualResult);
             }
+
+            @Test
+            @DisplayName("return false if doesnt contain element.")
+            void dequeReturnsFalseIfDoesntContainElement() {
+                Integer value = 2;
+                deque.append(1);
+                boolean expectedResult = false;
+                boolean actualResult = deque.contains(value);
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("return true if it contains the element.")
+            void dequeReturnsTrueIfContainsElement() {
+                Integer value = 2;
+                deque.append(2);
+                boolean expectedResult = true;
+                boolean actualResult = deque.contains(value);
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("return true if it contains the element.")
+            void dequeOfSize2ReturnsTrueIfContainsElement() {
+                Integer value = 4;
+                deque.append(2);
+                deque.append(4);
+                boolean expectedResult = true;
+                boolean actualResult = deque.contains(value);
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("return false if it doesnt contains the element.")
+            void dequeOfSize2ReturnsFalseIfDoesntContainsElement() {
+                Integer value = 5;
+                deque.append(2);
+                deque.append(4);
+                boolean expectedResult = false;
+                boolean actualResult = deque.contains(value);
+                assertEquals(expectedResult, actualResult);
+            }
+
+            @Test
+            @DisplayName("Null object does not exist in the Deque")
+            void nullDoesNonExist() {
+                Integer value = null;
+                deque.append(2);
+                deque.append(4);
+                boolean expectedResult = false;
+                boolean actualResult = deque.contains(value);
+                assertEquals(expectedResult, actualResult);
+            }
+        }
+
+        @Nested
+        @DisplayName("With sort() method")
+        class sort {
+
+            @Test
+            @DisplayName("sort empty deque returns empty deque.")
+            void sortEmptyDequeReturnsEmpty() {
+                int expectedSize = 0;
+                deque.sort(Comparator.naturalOrder());
+                int actualSize = deque.size();
+                assertEquals(expectedSize, actualSize);
+            }
+
+            @Test
+            @DisplayName("sort deque with one element.")
+            void sortDequeWithOneElement() {
+                int expectedSize = 1;
+                deque.append(2);
+                deque.sort(Comparator.naturalOrder());
+                int actualSize = deque.size();
+                Integer expectedFirst = 2;
+                Integer actualFirst = deque.first();
+                Integer expectedLast = 2;
+                Integer actualLast = deque.last();
+                assertAll(
+                        () -> assertEquals(expectedSize, actualSize),
+                        () -> assertEquals(expectedFirst, actualFirst),
+                        () -> assertEquals(expectedLast, actualLast)
+                );
+            }
+
+
+            @Test
+            @DisplayName("sort deque with two elements.")
+            void sortDequeWithTwoElements() {
+                int expectedSize = 2;
+                deque.append(2);
+                deque.append(1);
+                deque.sort(Comparator.naturalOrder());
+                int actualSize = deque.size();
+                Integer expectedFirst = 1;
+                Integer actualFirst = deque.first();
+                Integer expectedLast = 2;
+                Integer actualLast = deque.last();
+                assertAll(
+                        () -> assertEquals(expectedSize, actualSize),
+                        () -> assertEquals(expectedFirst, actualFirst),
+                        () -> assertEquals(expectedLast, actualLast)
+                );
+            }
+
+            @Test
+            @DisplayName("sort deque with two ordered elements.")
+            void sortDequeWithTwoOrderedElements() {
+                int expectedSize = 2;
+                deque.append(1);
+                deque.append(2);
+                deque.sort(Comparator.naturalOrder());
+                int actualSize = deque.size();
+                Integer expectedFirst = 1;
+                Integer actualFirst = deque.first();
+                Integer expectedLast = 2;
+                Integer actualLast = deque.last();
+                assertAll(
+                        () -> assertEquals(expectedSize, actualSize),
+                        () -> assertEquals(expectedFirst, actualFirst),
+                        () -> assertEquals(expectedLast, actualLast)
+                );
+            }
+
+            @Test
+            @DisplayName("sort deque with three elements.")
+            void sortDequeWithThreeElements() {
+                int expectedSize = 3;
+                deque.append(2);
+                deque.append(3);
+                deque.append(1);
+                deque.sort(Comparator.naturalOrder());
+                int actualSize = deque.size();
+                Integer expectedFirst = 1;
+                Integer actualFirst = deque.first();
+                Integer expectedLast = 3;
+                Integer actualLast = deque.last();
+                assertAll(
+                        () -> assertEquals(expectedSize, actualSize),
+                        () -> assertEquals(expectedFirst, actualFirst),
+                        () -> assertEquals(expectedLast, actualLast)
+                );
+            }
+
+            @Test
+            @DisplayName("sort deque with three ordered elements.")
+            void sortDequeWithThreeSortedElements() {
+                int expectedSize = 3;
+                deque.append(1);
+                deque.append(2);
+                deque.append(3);
+                deque.sort(Comparator.naturalOrder());
+                int actualSize = deque.size();
+                Integer expectedFirst = 1;
+                Integer actualFirst = deque.first();
+                Integer expectedLast = 3;
+                Integer actualLast = deque.last();
+                assertAll(
+                        () -> assertEquals(expectedSize, actualSize),
+                        () -> assertEquals(expectedFirst, actualFirst),
+                        () -> assertEquals(expectedLast, actualLast)
+                );
+            }
+
         }
     }
 }
