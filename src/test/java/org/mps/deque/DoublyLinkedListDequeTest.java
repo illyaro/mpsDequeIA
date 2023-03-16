@@ -565,7 +565,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("null object returns false")
+            @DisplayName("null value returns false")
             void nullDoesNonExist() {
                 Integer value = null;
                 deque.append(2);
@@ -590,7 +590,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Does nothing when element is not exist")
+            @DisplayName("does nothing when element is not present in deque")
             void doesNothingWhenElementIsNotExist() {
                 deque.append(4);
                 deque.append(5);
@@ -601,7 +601,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Deque of size 1 returns empty deque")
+            @DisplayName("returns empty deque when removing the only element in the deque")
             void RemovesTheSingleElementAndMakesDequeEmpty() {
                 deque.append(5);
                 deque.remove(5);
@@ -613,7 +613,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Removes the first element from the deque")
+            @DisplayName("removes the first element from deque that contains 2 elements")
             void removesFirstElement() {
                 deque.append(1);
                 deque.append(2);
@@ -632,7 +632,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Removes the last element of the deque")
+            @DisplayName("removes the last element from deque that contains 2 elements")
             void removesLastElement() {
                 deque.append(1);
                 deque.append(2);
@@ -651,7 +651,7 @@ class DoublyLinkedListDequeTest {
             }
 
             @Test
-            @DisplayName("Removes the middle element of the deque")
+            @DisplayName("removes the middle element of a deque with 3 elements")
             void removesMiddleElement() {
                 deque.append(1);
                 deque.append(2);
