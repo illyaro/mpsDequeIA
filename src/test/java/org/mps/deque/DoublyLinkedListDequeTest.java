@@ -49,50 +49,22 @@ Double Linked List Deque Test Cases:
                                                  last() returns 5;
                                                  size() returns 1.
 3. Advanced Deque operations:
+    a. get() element by index method:
+        i. Throws an IndexOutOfBoundsException exception when negative index is passed.
+        ii. Throws an IndexOutOfBoundsException exception when index is greater than size of Deque.
+        iii. Returns the fist element when index is 0.
+        iv. Returns the second element when index is 1.
+        v. Returns the last element when index is size of Deque - 1.
+    b. contains() method:
+        i. Returns false for any element when Deque is empty.
+        ii. Returns false when Deque of size 1 does not contain the element.
+        iii. Returns true when Deque of size 1 contains the element.
+        iv. Returns true when Deque of size 2 contain the element.
+        v. Returns false when Deque of size 2 does not contain the element.
+        vi. Returns false when null is passed.
+    c. remove() method:
 
  */
-
-
-/*
-TEST CASES:
- size() of empty Deque is 0.
- first() of empty Deque throws exception.
- last() of empty Deque throws exception.
- DeleteFirst on empty Deque throws exception.
- DeleteLast on empty Deque throws exception.
-
- Prepend 5 to empty Deque : first() returns 5;
-                            last() returns 5;
-                            size() returns 1.
-
- Append 5 to empty Deque : first() returns 5;
-                           last() returns 5;
-                           size() returns 1.
-
- Prepend 2 to Deque containing 5 : first() returns 2;
-                                   last() returns 5;
-                                   size() returns 2.
-
- Append 2 to Deque containing 5 : first() returns 5;
-                                  last() returns 2;
-                                  size() returns 2.
-
-DeleteFirst() of Deque containing 5: first() throws exception;
-                                     last() throws exception;
-                                     size() returns 0.
-
-DeleteLast() of Deque containing 5: first() throws exception;
-                                     last() throws exception;
-                                     size() returns 0.
-
-DeleteFirst() of Deque containing 5 and 2: first() returns 2;
-                                           last() returns 2;
-                                           size() returns 1.
-
-DeleteLast() of Deque containing 5 and 2: first() returns 5;
-                                           last() returns 5;
-                                           size() returns 1.
- */ // Potentially have to be removed
 
 @DisplayName("Double Linked List Deque")
 class DoublyLinkedListDequeTest {
@@ -476,7 +448,7 @@ class DoublyLinkedListDequeTest {
 
             @Test
             @DisplayName("index greater than size throws exception.")
-            void sizeIndexThrowsException() {
+            void greatherThanSizeIndexThrowsException() {
                 deque.append(1);
                 int index = 2;
                 assertThrows(IndexOutOfBoundsException.class, () -> deque.get(index));
