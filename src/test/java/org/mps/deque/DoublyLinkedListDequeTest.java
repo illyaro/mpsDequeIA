@@ -63,6 +63,13 @@ Double Linked List Deque Test Cases:
         v. Returns false when Deque of size 2 does not contain the element.
         vi. Returns false when null is passed.
     c. remove() method:
+    d. sort() method:
+        i. Return an empty Deque when Deque is empty.
+        ii. Return the same Deque of size 1 when applied to Deque is of size 1.
+        iii. Returns a sorted Deque of size 2 when applied to unsorted Deque is of size 2.
+        iv. Returns a sorted Deque of size 2 when applied to sorted Deque is of size 2.
+        v. Returns a sorted Deque of size 3 when applied to unsorted Deque is of size 3.
+        vi. Returns a sorted Deque of size 3 when applied to sorted Deque is of size 3.
 
  */
 
